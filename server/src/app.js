@@ -1,10 +1,17 @@
+import cookieParser from "cookie-parser";
 import express from "express";
+import { cors } from "./middleware/cors.js";
 import { errorHandler } from "./middleware/errorHandler.js";
+import { requireTrustedOrigin } from "./middleware/requireTrustedOrigin.js";
+import authRoutes from "./modules/auth/auth.routes.js";
 import { AppError } from "./utils/AppError.js";
 
 const app = express();
 
-app.use(express.json());
+app.use("/api", cors);
+app.use("/api", requireTrustedOrigin);
+app.use(express.json({ limit: "100kb" }));
+app.use(cookieParser());
 
 app.get("/api/health", (req, res) => {
   res.status(200).json({
@@ -12,6 +19,8 @@ app.get("/api/health", (req, res) => {
     message: "App is working!",
   });
 });
+
+app.use("/api/auth", authRoutes);
 
 //No route exist
 app.use((req, res, next) => {
