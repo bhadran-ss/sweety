@@ -12,7 +12,7 @@ export function cors(req, res, next) {
   res.set("Access-Control-Allow-Credentials", "true");
 
   if (req.method === "OPTIONS") {
-    res.set("Access-Control-Allow-Methods", "GET, HEAD, POST, OPTIONS");
+    res.set("Access-Control-Allow-Methods", "GET, HEAD, POST, PUT, DELETE, OPTIONS");
     res.set("Access-Control-Allow-Headers", "Content-Type");
     return res.sendStatus(204);
   }

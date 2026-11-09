@@ -4,6 +4,7 @@ import { cors } from "./middleware/cors.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import { requireTrustedOrigin } from "./middleware/requireTrustedOrigin.js";
 import authRoutes from "./modules/auth/auth.routes.js";
+import readingsRoutes from "./modules/readings/readings.routes.js";
 import { AppError } from "./utils/AppError.js";
 
 const app = express();
@@ -21,6 +22,7 @@ app.get("/api/health", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/readings", readingsRoutes);
 
 //No route exist
 app.use((req, res, next) => {
