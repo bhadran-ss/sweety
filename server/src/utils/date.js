@@ -14,3 +14,19 @@ export function getTodayDate(now = new Date()) {
 
   return `${parts.year}-${parts.month}-${parts.day}`;
 }
+
+export function getReportDateRanges(date) {
+  const monthStart = `${date.slice(0, 7)}-01`;
+  const previousMonthEnd = new Date(`${monthStart}T00:00:00.000Z`);
+  previousMonthEnd.setUTCDate(0);
+  const previousEnd = previousMonthEnd.toISOString().slice(0, 10);
+
+  return {
+    daily: { start_date: date, end_date: date },
+    month_to_date: { start_date: monthStart, end_date: date },
+    previous_month: {
+      start_date: `${previousEnd.slice(0, 7)}-01`,
+      end_date: previousEnd,
+    },
+  };
+}
