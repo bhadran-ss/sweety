@@ -9,7 +9,7 @@ export const pool = new Pool({
 });
 
 pool.on("error", (error) => {
-  console.error("Unexpected error on a idle DB connection:", {
+  console.error("Unexpected error on an idle DB connection:", {
     code: error.code,
     message: error.message,
   });

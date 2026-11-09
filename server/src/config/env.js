@@ -22,7 +22,7 @@ if (!allowedEnvironments.includes(nodeEnv)) {
 
 //DB
 if (!databaseUrl?.trim()) {
-  throw new Error("DATABASSE_URL is required.");
+  throw new Error("DATABASE_URL is required.");
 }
 
 let parsedDatabaseUrl;

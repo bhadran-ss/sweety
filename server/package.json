@@ -2,8 +2,11 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
+    "test": "node --test test/*.test.js",
+    "db:migrate": "node src/db/migrate.js",
+    "db:seed": "node src/db/seed.js",
     "db:check": "node src/db/check.js",
     "dev": "nodemon src/server.js",
     "start": "node src/server.js"
