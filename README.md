@@ -2,7 +2,7 @@
 
 An Express API with PostgreSQL for recording personal glucose readings and viewing
 daily, month-to-date, and previous-month reports. The backend and React
-authentication screens are implemented. Reading-management and report screens
+authentication and reading-management screens are implemented. Report screens
 are the next phase.
 
 ## Backend setup
@@ -82,6 +82,12 @@ clears the cookie and the frontend user state. Expired sessions return to login;
 the app also rechecks the session when the tab gains focus and once a minute while
 visible. Network failures offer a retry instead of being treated as logout.
 Authentication tokens are never stored in localStorage or sessionStorage.
+
+The dashboard lets you select a date, add readings, edit their date/slot/value,
+and delete them with confirmation. It shows all four daily slots, validates whole
+numbers from 40 to 600, and displays duplicate-slot and daily-limit errors. Dates
+use Asia/Kolkata to match the API. Changing the viewed date resets the form;
+a reading saved to another date can be viewed by selecting that date.
 
 From `client`, build or check the client:
 
@@ -168,5 +174,4 @@ matching `CLIENT_ORIGIN`, including when using Postman or curl.
 - Improvements with more time: password recovery, session revocation, pagination,
   and broader browser/deployment testing.
 
-Reading-management screens, report screens, and final application screenshots
-remain to be completed.
+Report screens and final application screenshots remain to be completed.

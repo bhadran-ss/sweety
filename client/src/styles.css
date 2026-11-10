@@ -539,3 +539,118 @@ fieldset {
     padding: 24px;
   }
 }
+
+.readings-section {
+  margin: 28px 0 48px;
+}
+.readings-heading h2 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+.readings-heading p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.day-picker {
+  max-width: 230px;
+  margin-top: 22px;
+}
+.readings-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+.reading-list,
+.reading-form {
+  padding: 26px;
+  min-width: 0;
+}
+.reading-form {
+  border-left: 1px solid var(--line);
+}
+.readings-grid h3 {
+  font-size: 17px;
+  margin: 0 0 24px;
+}
+.readings-grid h3 span {
+  color: var(--muted);
+  font-weight: 400;
+}
+.reading-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.reading-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+  padding: 18px 0;
+}
+.reading-list strong {
+  font-size: 13px;
+}
+.reading-list li p {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 8px 0 0;
+}
+.reading-list b {
+  color: var(--ink);
+  font-size: 19px;
+}
+.reading-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.reading-actions .text-button {
+  min-height: 44px;
+  margin: 0;
+  font-size: 12px;
+}
+.field select {
+  width: 100%;
+  min-width: 0;
+  height: 49px;
+  padding: 0 12px;
+  border: 1px solid var(--ink);
+  background: #fffdf9;
+  color: var(--ink);
+  border-radius: 0;
+  font: inherit;
+  font-size: 14px;
+}
+.empty-readings {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.delete-confirm {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+@media (max-width: 760px) {
+  .readings-grid {
+    grid-template-columns: 1fr;
+  }
+  .reading-form {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+  .reading-list,
+  .reading-form {
+    padding: 20px;
+  }
+  .field select {
+    font-size: 16px;
+    height: 52px;
+  }
+}
