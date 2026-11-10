@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../auth/AuthContext.jsx";
+import Reports from "../components/Reports.jsx";
 import Readings from "../components/Readings.jsx";
 import Brand from "../components/Brand.jsx";
 import Icon from "../components/Icon.jsx";
@@ -8,6 +9,7 @@ export default function DashboardPage() {
   const { user, logout, connectionError, refreshSession } = useAuth();
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
+  const [readingsRevision, setReadingsRevision] = useState(0);
   const busy = useRef(false);
   useEffect(() => {
     document.title = "Your readings · Sweety";
@@ -67,7 +69,8 @@ export default function DashboardPage() {
             <p>Record and manage your blood glucose readings.</p>
           </div>
         </div>
-        <Readings />
+        <Readings onChange={() => setReadingsRevision((n) => n + 1)} />
+        <Reports revision={readingsRevision} />
       </main>
     </div>
   );

@@ -8,7 +8,7 @@ const emptyForm = (date) => ({
   value: "",
 });
 
-export default function Readings() {
+export default function Readings({ onChange }) {
   const [date, setDate] = useState(todayDate);
   return (
     <section className="readings-section" aria-labelledby="readings-heading">
@@ -18,12 +18,17 @@ export default function Readings() {
           <p>Up to four readings a day.</p>
         </div>
       </div>
-      <DailyReadings key={date} date={date} onDateChange={setDate} />
+      <DailyReadings
+        key={date}
+        date={date}
+        onDateChange={setDate}
+        onChange={onChange}
+      />
     </section>
   );
 }
 
-function DailyReadings({ date, onDateChange }) {
+function DailyReadings({ date, onDateChange, onChange }) {
   const [readings, setReadings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState("");
@@ -106,6 +111,7 @@ function DailyReadings({ date, onDateChange }) {
           : `Reading added for ${data.reading.reading_date}.`,
       );
       resetForm();
+      onChange?.();
     } catch (err) {
       setError(err.message);
     } finally {
@@ -126,6 +132,7 @@ function DailyReadings({ date, onDateChange }) {
       if (editing === deleting.id) resetForm();
       setDeleting(null);
       setMessage("Reading deleted.");
+      onChange?.();
     } catch (err) {
       setError(err.message);
     } finally {

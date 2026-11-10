@@ -2,8 +2,7 @@
 
 An Express API with PostgreSQL for recording personal glucose readings and viewing
 daily, month-to-date, and previous-month reports. The backend and React
-authentication and reading-management screens are implemented. Report screens
-are the next phase.
+authentication, reading-management, and report screens are implemented.
 
 ## Backend setup
 
@@ -88,6 +87,12 @@ and delete them with confirmation. It shows all four daily slots, validates whol
 numbers from 40 to 600, and displays duplicate-slot and daily-limit errors. Dates
 use Asia/Kolkata to match the API. Changing the viewed date resets the form;
 a reading saved to another date can be viewed by selecting that date.
+
+Reports appear below the readings form with an independent report date. They show
+highest, lowest, average (one decimal), and count for the selected day, the month
+to that day, and the whole previous month. The daily report also lists its slots
+and values. Empty periods show a friendly message instead of zero-valued glucose
+statistics. Reports refresh after successful reading changes.
 
 From `client`, build or check the client:
 
@@ -174,4 +179,4 @@ matching `CLIENT_ORIGIN`, including when using Postman or curl.
 - Improvements with more time: password recovery, session revocation, pagination,
   and broader browser/deployment testing.
 
-Report screens and final application screenshots remain to be completed.
+Final application screenshots or a short demo recording remain to be added.
