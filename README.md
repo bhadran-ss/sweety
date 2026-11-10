@@ -144,7 +144,8 @@ in `sweety_test`, clean up afterward, and do not reset the development database.
 See [test setup and migration details](server/test/README.md).
 
 The client's `npm test` checks its API helper, including credentials, backend error
-messages, expired-session notifications, and network/proxy failures.
+messages, expired-session notifications, network/proxy failures, reading validation,
+and timezone boundaries.
 
 ## API
 
@@ -170,7 +171,7 @@ matching `CLIENT_ORIGIN`, including when using Postman or curl.
 - Monthly means the entire previous calendar month. For October 15, reports cover
   October 15, October 1–15, and September 1–30.
 - Averages use individual readings and are rounded to one decimal. The frontend
-  will format whole-number averages such as `120` as `120.0`.
+  formats whole-number averages such as `120` as `120.0`.
 - Registration automatically signs the user in. Sessions last 15 minutes.
   Logout clears the browser cookie; copied JWTs remain valid until expiry.
 - Controllers handle HTTP, services enforce business rules, and repositories run
@@ -179,4 +180,25 @@ matching `CLIENT_ORIGIN`, including when using Postman or curl.
 - Improvements with more time: password recovery, session revocation, pagination,
   and broader browser/deployment testing.
 
-Final application screenshots or a short demo recording remain to be added.
+## Screenshots
+
+Captured from the running app with test-only sample data.
+
+![Sign-in screen](docs/screenshots/login.png)
+
+![Readings and reports](docs/screenshots/readings-reports.png)
+
+[View the mobile layout](docs/screenshots/mobile.png)
+
+## Verification
+
+Checked on 10 November 2026:
+
+- 52 backend tests passed, covering authentication, ownership, validation,
+  concurrent writes, report calculations, migrations, and demo seeding.
+- 9 client tests passed, covering API errors, reading validation, and dates.
+- `npm run build` completed successfully in `client`.
+- Local browser checks passed for registration, login/logout, session expiry,
+  reading creation/editing/deletion, report updates, error recovery, and mobile
+  layouts. Browser checks used temporary isolated test data; they are not part
+  of the committed `npm test` suites.
