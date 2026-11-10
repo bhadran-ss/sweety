@@ -1,0 +1,541 @@
+:root {
+  font-family: "DM Sans", system-ui, sans-serif;
+  color: #513322;
+  background: #fff3e5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --ink: #513322;
+  --muted: #795b47;
+  --line: #b88b69;
+  --paper: #fff9f0;
+  --orange: #ffcf9f;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+}
+button,
+input {
+  font: inherit;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+a {
+  color: inherit;
+}
+a,
+button,
+input {
+  outline-offset: 4px;
+}
+:focus-visible {
+  outline: 3px solid #ad4f19;
+}
+svg {
+  flex-shrink: 0;
+}
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  text-decoration: none;
+}
+.brand > span {
+  font-family: Georgia, serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -1.8px;
+}
+.brand-dot,
+.welcome-dot {
+  color: #b85822;
+}
+.auth-layout {
+  width: min(100% - 32px, 420px);
+  margin: 56px auto;
+  min-height: 0;
+  display: block;
+}
+.eyebrow {
+  font-family: "Courier New", monospace;
+}
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tiny-dot {
+  width: 6px;
+  height: 6px;
+  display: inline-block;
+  background: currentColor;
+}
+.form-panel {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 28px;
+}
+.auth-topline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  border-top: 1px solid var(--line);
+  margin-top: 24px;
+  padding-top: 16px;
+}
+.auth-topline a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 700;
+  text-underline-offset: 4px;
+  padding: 8px 0;
+}
+.auth-topline a[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: wait;
+}
+.auth-form-wrap {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.auth-form-wrap h1 {
+  font:
+    600 24px "DM Sans",
+    sans-serif;
+  margin: 0 0 26px;
+}
+.field {
+  margin-bottom: 20px;
+}
+.field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 9px;
+}
+.field input {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  height: 49px;
+  padding: 0 13px;
+  color: var(--ink);
+  background: #fffdf9;
+  font-size: 14px;
+}
+.field input::placeholder {
+  color: #8b7563;
+}
+.field input:focus {
+  outline: 2px solid #b86329;
+  outline-offset: 2px;
+}
+.password-field {
+  position: relative;
+}
+.password-field input {
+  padding-right: 49px;
+}
+.password-toggle {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  height: 45px;
+  width: 45px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: var(--muted);
+  border: 0;
+}
+.password-toggle:hover {
+  background: #ffe8d1;
+}
+.field-hint {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 8px 0 0;
+}
+.button {
+  min-height: 47px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 12px 18px;
+}
+.button-primary {
+  color: var(--ink);
+  background: #ffbb7c;
+}
+.button-primary:hover:not(:disabled) {
+  background: #ffaa5c;
+}
+.submit-button {
+  width: 100%;
+  justify-content: center;
+  margin-top: 3px;
+}
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin: 26px 0 18px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.divider::before,
+.divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--line);
+}
+.button-demo {
+  width: 100%;
+  color: var(--ink);
+  background: transparent;
+}
+.button-demo:hover:not(:disabled),
+.button-logout:hover {
+  background: #ffe1c1;
+}
+.signup-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-top: 20px;
+}
+.error-message,
+.notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 13px;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  border: 1px solid;
+}
+.error-message {
+  color: #8c2f20;
+  background: #ffe9dd;
+}
+.notice {
+  background: #fff0ce;
+  color: #77501d;
+}
+.error-message svg,
+.notice svg {
+  margin-top: 1px;
+}
+.text-button {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  min-width: 44px;
+  min-height: 24px;
+  margin-left: auto;
+}
+.session-screen {
+  min-height: 100dvh;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.session-card {
+  margin: auto;
+  padding: 40px 24px;
+  max-width: 440px;
+  text-align: center;
+  border-top: 3px double var(--ink);
+  border-bottom: 3px double var(--ink);
+}
+.session-card h1 {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 38px;
+  font-weight: 400;
+}
+.session-card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.session-card .button {
+  margin-top: 16px;
+}
+.spinner {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  border: 2px solid #eac5a3;
+  border-top-color: var(--ink);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+.spinner-small {
+  height: 15px;
+  width: 15px;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.dashboard-shell {
+  min-height: 100dvh;
+  max-width: 1080px;
+  margin: auto;
+  padding: 0 32px;
+}
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px 0;
+  border-bottom: 3px double var(--ink);
+  gap: 16px;
+}
+.header-account {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.signed-in-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+}
+.button-logout {
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 40px;
+  padding: 9px 14px;
+}
+.dashboard-main {
+  margin: 32px auto 0;
+}
+.welcome-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  background: var(--orange);
+  border: 1px solid var(--ink);
+  gap: 20px;
+}
+.welcome-banner h1 {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  margin: 17px 0 12px;
+  overflow-wrap: anywhere;
+}
+.welcome-banner p {
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 0;
+}
+.account-card {
+  margin-top: 28px;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  padding: 26px 30px 0;
+}
+.account-card-heading {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+.account-avatar {
+  width: 45px;
+  height: 45px;
+  border: 1px solid var(--ink);
+  background: var(--orange);
+  display: grid;
+  place-items: center;
+  font-size: 21px;
+  font-family: Georgia, serif;
+}
+.account-card h2 {
+  font-size: 17px;
+  margin: 0 0 5px;
+}
+.account-card-heading p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+.account-badge {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font:
+    11px "Courier New",
+    monospace;
+}
+.account-details {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  gap: 25px;
+  padding: 28px 0;
+  margin: 0;
+}
+.account-details dt {
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 12px;
+}
+.account-details dd {
+  margin: 0;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.account-footnote {
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--muted);
+  padding: 17px 0;
+}
+.account-footnote p {
+  font-size: 11px;
+  line-height: 1.7;
+  margin: 0;
+}
+@media (max-width: 1100px) {
+}
+@media (max-width: 760px) {
+  .brand > span {
+    font-size: 28px;
+  }
+  .brand img {
+    width: 32px;
+    height: 32px;
+  }
+  .field input {
+    font-size: 16px;
+    height: 52px;
+  }
+  .password-toggle {
+    height: 48px;
+    width: 48px;
+  }
+  .button {
+    min-height: 48px;
+  }
+  .dashboard-shell {
+    padding: 0 20px;
+  }
+  .dashboard-header {
+    padding: 20px 0;
+  }
+  .signed-in-label {
+    display: none;
+  }
+  .button-logout {
+    min-height: 42px;
+    font-size: 11px;
+  }
+  .dashboard-main {
+    margin-top: 20px;
+  }
+  .welcome-banner {
+    padding: 26px 22px;
+  }
+  .welcome-banner h1 {
+    font-size: 28px;
+  }
+  .account-card {
+    padding: 22px 20px 0;
+  }
+  .account-details {
+    grid-template-columns: 1fr;
+    padding: 25px 0;
+  }
+  .account-details dt {
+    margin-bottom: 8px;
+  }
+  .account-badge {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.auth-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+.auth-header .brand {
+  font-family: inherit;
+}
+.auth-header p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+@media (max-width: 760px) {
+  .auth-layout {
+    margin: 28px auto;
+  }
+  .form-panel {
+    padding: 24px;
+  }
+}

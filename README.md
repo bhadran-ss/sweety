@@ -1,12 +1,14 @@
 # Sweety — Blood Glucose Tracker
 
 An Express API with PostgreSQL for recording personal glucose readings and viewing
-daily, month-to-date, and previous-month reports. The backend is implemented;
-the React frontend is the next phase.
+daily, month-to-date, and previous-month reports. The backend and React
+authentication screens are implemented. Reading-management and report screens
+are the next phase.
 
 ## Backend setup
 
-Prerequisites: Node.js 20 or newer, npm, and PostgreSQL.
+Prerequisites: Node.js 22.12 or newer, npm, and PostgreSQL. The frontend uses
+[Vite](https://vite.dev/guide/) with React.
 
 For a new local database setup, open PostgreSQL as an administrator:
 
@@ -54,6 +56,46 @@ Baseline assumes the existing tables match those migration files.
 The API defaults to `http://localhost:5000`; check `GET /api/health`.
 Use `npm start` to run without the development watcher.
 
+## Frontend setup
+
+Keep the API running in one terminal. In a second terminal, from the project root:
+
+```sh
+cd client
+npm ci
+npm run dev
+```
+
+Open **http://localhost:5173**. Keep `CLIENT_ORIGIN=http://localhost:5173` in
+`server/.env`; use that hostname rather than `127.0.0.1` in the browser. The client
+uses port 5173 strictly so a busy port cannot silently break the origin check.
+
+Vite proxies `/api` to `http://localhost:5000` and preserves the browser's Origin
+header. If the API runs elsewhere, copy `client/.env.example` to `client/.env`
+and adjust `API_PROXY_TARGET`. The default needs no client environment file.
+Never put database credentials or JWT secrets in the client configuration.
+
+The frontend includes registration, login, password visibility controls, a demo
+login button, and a protected account dashboard. Registration signs in
+automatically. Refreshing restores the session through `/api/auth/me`. Logout
+clears the cookie and the frontend user state. Expired sessions return to login;
+the app also rechecks the session when the tab gains focus and once a minute while
+visible. Network failures offer a retry instead of being treated as logout.
+Authentication tokens are never stored in localStorage or sessionStorage.
+
+From `client`, build or check the client:
+
+```sh
+npm test
+npm run build
+npm run preview
+```
+
+Preview uses port 5173 and the same local API proxy; stop the dev client before
+starting preview. For production, serve `client/dist` with SPA fallback for React
+routes and proxy `/api` to Express on the same origin. Vite's development proxy
+is not a production server configuration.
+
 ## Demo data
 
 Demo credentials:
@@ -90,6 +132,9 @@ Tests exercise the HTTP API and real PostgreSQL queries. They use isolated schem
 in `sweety_test`, clean up afterward, and do not reset the development database.
 See [test setup and migration details](server/test/README.md).
 
+The client's `npm test` checks its API helper, including credentials, backend error
+messages, expired-session notifications, and network/proxy failures.
+
 ## API
 
 | Method | Endpoint | Purpose |
@@ -123,4 +168,5 @@ matching `CLIENT_ORIGIN`, including when using Postman or curl.
 - Improvements with more time: password recovery, session revocation, pagination,
   and broader browser/deployment testing.
 
-React setup/run instructions and screenshots will be added with the frontend.
+Reading-management screens, report screens, and final application screenshots
+remain to be completed.
